@@ -1,0 +1,49 @@
+
+<html>
+<head>
+    <title>Gaidot dzimšanas dienu..</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>Gaidot dzimšanas dienu..</h1>
+<hr>
+<form onsubmit="return false;">
+    <p>Ievadi pilnu datumu, kad Tev būs tuvākā dzimšanas diena</p>
+
+    gads:
+    <input type="number" id="gads"><br><br>
+
+    mēnesis:
+    <input type="number" id="menesis" min="1" max="12"><br><br>
+
+    diena:
+    <input type="number" id="datums" min="1" max="31"><br><br>
+
+    <button onclick="dienas()">Aprēķināt dienu skaitu līdz dzimšanas dienai</button><br><br>
+
+    Līdz svētkiem atlikušas 
+    <input type="text" id="rez" readonly>
+    dienas : ))
+</form>
+
+<script>
+function dienas() {
+    let menes = parseInt(document.getElementById("menesis").value);
+    let dien = parseInt(document.getElementById("datums").value);
+    let sodien = new Date();
+    let dzimene = new Date(sodien.getFullYear(), menes - 1, dien);
+
+    // ja jau pagājusi
+    if (dzimene < sodien) {
+        dzimene.setFullYear(sodien.getFullYear() + 1);
+    }
+
+    let diff = dzimene - sodien;
+    let days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("rez").value = days;
+}
+</script>
+</body>
+</html>
