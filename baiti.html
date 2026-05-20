@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>baiti.html</title>
+<style>
+div {  
+    width: 35%;
+  border: 2px solid blue;
+  padding: 5px;
+  margin: 5px;
+}
+</style>
+</head>
+<body>
+    <div>
+        <form id="kaste">
+        <p>Aprēķināt cik daudz informācijas var lejuplādēt</p>
+            <input type="text" id="sek" onfocus="reset()">
+            <label>sekundēs, ja interneta ātrums ir 25 Mbps.</label>
+        <p>Atbilde</p>
+        <input type="text" id="rez">
+        <label><input type="radio" name="izvele" value="KiB" onclick="rekini()">KiB</label>
+        <label><input type="radio" name="izvele" value="KB" onclick="rekini()">KB</label>
+        </form>
+    </div>
+    <script>
+function rekini() {
+    let sek = document.getElementById("sek").value;
+    let radios = document.getElementsByName("izvele");
+    let vieniba = "";
+    for (let i of radios) {
+        if (i.checked) {
+            vieniba = i.value;
+        }
+    }
+    if (sek === "") {
+        document.getElementById("rez").value = "";
+        return;
+    }
+    let MBps = 25 * 1000000 * sek;
+    let MB = MBps / 8;
+    let rezultats;
+    if (vieniba === "KB") {
+        rezultats = MB / 1000;
+    } else {
+        rezultats = MB / 1024;
+    }
+    document.getElementById("rez").value = parseFloat(rezultats.toFixed(4));  
+    function reset() {
+    document.getElementById("kaste").reset();
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>mervienibas.html</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url("cipari.jpg");
+            background-repeat:repeat;
+        }
+        form {
+            background-color: rgb(220, 220, 0);
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Informācijas daudzuma mērvienības</h1>
+<form>
+    <input type="text" id="GB">
+    <label>GB =</label>
+    <br><br>
+    <button type="button" onclick="MB()">Izteikt megabaitos</button>
+    <input type="text" id="mb">
+    <label>MB</label>
+    <br><br>
+    <button type="button" onclick="MiB()">Izteikt mibibaitos</button>
+    <input type="text" id="mib">
+    <label>MiB</label>
+</form>
+<script>
+function MB() {
+    let GB = parseFloat(document.getElementById("GB").value);
+    let mb = GB * 1000;
+    document.getElementById("mb").value = mb;
+}
+
+function MiB() {
+    let GB = parseFloat(document.getElementById("GB").value);
+    let mib = GB * 1024;
+    document.getElementById("mib").value = mib;
+}
+</script>
+
+</body>
+</html>

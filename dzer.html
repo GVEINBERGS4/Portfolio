@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>dzer</title>
+    <link href="css/stils.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<p>Izvēlies dzērienu:</p>
+
+<form>
+  <input type="radio" id="kafija" name="drink" value="3.60">
+  <label for="kafija">kafija</label><br>
+
+  <input type="radio" id="sula" name="drink" value="2.50">
+  <label for="sula">sula</label><br>
+
+  <input type="radio" id="kakao" name="drink" value="3.20">
+  <label for="kakao">kakao</label><br><br>
+
+  <input type="button" id="poga" value="Jāmaksā" onclick="maksa()">
+  <span id="rezultats"></span>
+</form> 
+<script>
+function maksa(){
+    let dz = document.getElementsByName('drink');
+    let selectedValue = "";
+    for(let i = 0; i < dz.length; i++) {
+       if(dz[i].checked) {
+           selectedValue = dz[i].value;
+           break;
+       }
+    }
+    let rez = document.getElementById("rezultats");
+    if(selectedValue !== "") {
+        rez.innerHTML = selectedValue;
+    } else {
+        rez.innerHTML = "Izvēlies dzērienu";
+    }
+}   
+</script>
+</body>
+</html>
